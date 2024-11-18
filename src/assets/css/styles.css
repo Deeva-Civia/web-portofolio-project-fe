@@ -1,4 +1,9 @@
-
+.spinner {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 * {
     margin: 0;
     padding: 0;
@@ -107,13 +112,6 @@ nav {
     margin-top: 0;
     margin-bottom: 30px;
     line-height: 1.3;
-}
-
-.title span {
-    display: block;
-}
-
-.title .purple {
     background: linear-gradient(to right,#ca4dfc 0%, #ffffff 57%);
     -webkit-background-clip: text;
     background-clip: text;
