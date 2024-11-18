@@ -1,4 +1,6 @@
 import './assets/css/styles.css';
+import Certificate from './component/Certificate';
+import Experience from './component/Experience';
 import Hero from './component/Hero';
 import Navbar from './component/Navbar';
 import Skills from './component/Skills';
@@ -12,64 +14,8 @@ function App() {
           <div className="container">
             <Hero />
             <Skills />
-
-            <section id="experience">
-              <h2 className="sub-title">Experience</h2>
-              <div className="timeline">
-                <div className="timeline-item">
-                  <div className="date">Aug 2024 - Present</div>
-                  <div className="subtitle">Computer Science Student Association (CSSA)</div>
-                  <div className="role">Education &amp; BEM</div>
-                  <div className="description">Managed student aspirations and conducted tutoring sessions.</div>
-                </div>
-                <div className="timeline-item">
-                  <div className="date">Aug 2024 - Sep 2024</div>
-                  <div className="subtitle">Filkom Day Committee</div>
-                  <div className="role">PIC</div>
-                  <div className="description">Managed student aspirations and conducted tutoring sessions.</div>
-                </div>
-                <div className="timeline-item">
-                  <div className="date">Aug 2023 - Dec 2023</div>
-                  <div className="subtitle">Event Organizer Unklab</div>
-                  <div className="role">Member</div>
-                  <div className="description">Organized various campus events.</div>
-                </div>
-                <div className="timeline-item">
-                  <div className="date">Apr 2022 - May 2022</div>
-                  <div className="subtitle">Graduation Committee, SMAN 1 Airmadidi</div>
-                  <div className="role">Treasurer</div>
-                  <div className="description">Managed finances for an event with 500 participants.</div>
-                </div>
-              </div>
-              <div className="blur-circle pink-circle" />
-            </section>
-
-            <section id="certificate">
-              <h2 className="sub-title">Certificate</h2>
-              <div className="certificates-grid">
-                <div className="certificate-card">
-                  <img src="img/sertifikat alibaba.png" alt="Cerificate from Alibaba" />
-                </div>
-                <div className="certificate-card">
-                  <img src="img/sertifikat bootstrap.png" alt="Certificate Bootstrap" />
-                </div>
-                <div className="certificate-card">
-                  <img src="img/sertifikat dicoding.png" alt="Certificate from Dicoding" />
-                </div>
-                <div className="certificate-card">
-                  <img src="img/sertifikat javascript.png" alt="Certificate Javascript" />
-                </div>
-              </div>
-              <div className="bottom-certificates">
-                <div className="certificate-card">
-                  <img src="img/sertifikat ksn nasional.png" alt="Certificate KSN Astronomi" />
-                </div>
-                <div className="certificate-card">
-                < img src="img/sertifikat sololearn.png" alt="Certificate from Sololearn" />
-                </div>
-              </div>
-              <div className="blur-circle blue-circle" />
-            </section>
+            <Experience />
+            <Certificate />
 
             <section id="project">
               <h2 className="sub-title">Project</h2>
@@ -126,6 +72,7 @@ function App() {
                 <p className="email">Email: deevacivia@gmail.com</p>
               </div>
             </section>
+            
             <footer className="footer-container">
               <div className="footer-content">
                 <p>&copy; Copyright 2024, Portofolio by Deeva Civia Aulia Lolong</p>
