@@ -1,38 +1,54 @@
-import SkillCard from './SkillCard';
+import { getDatabase, ref, onValue } from "firebase/database";
+import { useEffect, useState} from "react";
 const Skills = () => {
-    const skillsData = [
-        {
-            icon: 'img/icons-programming.png',
-            title: 'Programming',
-            description: 'Proficient in Python, C#, SQL, JavaScript, HTML, and CSS to develop functional and efficient solutions for web and software projects.'
-        },
-        {
-            icon: 'img/icons-design.png',
-            title: 'Design Tools',
-            description: 'Experienced in using Figma, Canva, Visual Studio, and XAMPP to create visually stunning designs and streamline development workflows.'
-        },
-        {
-            icon: 'img/icons-project-management.png',
-            title: 'Project Management',
-            description: 'Skilled in creating and managing Gantt charts, performing cost analysis, and calculating Break-Even Points (BEP) for effective project execution.'
-        },
-        {
-            icon: 'img/icons-leadership.png',
-            title: 'Leadership',
-            description: 'Proven ability to lead and inspire teams, driving success in various projects and large-scale events through effective communication and coordination.'
-        }
-    ];
+    const [skill, setSkill] = useState({});
+
+    useEffect(() => {
+        const db = getDatabase();
+        const heroRef = ref(db, "skil/");
+        onValue(heroRef, (snapshot) => {
+            const data = snapshot.val();
+            setSkill(data);
+        });
+}, []);
     
     return (
-    <section id="skills">
-        <h2 className="sub-title">Skills</h2>
-        <div className="skills-grid">
-        {skillsData.map((skill, index) => (
-            <SkillCard key={index} {...skill} />
-        ))}
-        <div className="blur-circle blue-circle" />
-        </div>
-    </section>
+        <section id="skills" className="skills-section">
+            <div div className="container">
+                <h2 className="sub-title">{skill.title}</h2>
+                <div className="skills-grid">
+                <div className="skill-card">
+                    <img className="skill-icon" src='img/icons-programming.png' alt='programming' />
+                    <h2 className="skill-title">{skill.subtitle1}</h2>
+                    <p className="skill-description">
+                        {skill.text1}
+                    </p>
+                </div>
+                <div className="skill-card">
+                    <img className="skill-icon" src='img/icons-design.png' alt='design' /> 
+                    <h2 className="skill-title">{skill.subtitle2}</h2>
+                    <p className="skill-description">
+                        {skill.text2}
+                    </p>
+                </div>
+                <div className="skill-card">
+                    <img className="skill-icon" src='img/icons-project-management.png' alt='project-management' />
+                    <h2 className="skill-title">{skill.subtitle3}</h2>
+                    <p className="skill-description">
+                        {skill.text3}
+                    </p>
+                </div>
+                <div className="skill-card">
+                    <img className="skill-icon" src='img/icons-leadership.png' alt='leadership' />
+                    <h2 className="skill-title">{skill.subtitle4}</h2>
+                    <p className="skill-description">
+                        {skill.text4}
+                    </p>
+                </div>
+                </div>
+            </div>
+        </section>
     );
 };
+
 export default Skills;

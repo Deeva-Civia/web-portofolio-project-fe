@@ -1,6 +1,6 @@
 import { getDatabase, ref, onValue } from "firebase/database";
 import { useEffect, useState, CSSProperties } from "react";
-import RingLoader from "react-spinners/ClipLoader";
+import RingLoader from "react-spinners/RingLoader";
 
 
 const override: CSSProperties = {
