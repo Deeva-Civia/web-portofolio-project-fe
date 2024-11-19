@@ -20,35 +20,46 @@ const Experience = () => {
             	duration={2000}>
                 <h2 className="sub-title">{experience.title}</h2>
             </Zoom>
-            <Zoom
-                duration={3000}>
+            
                 <div className="timeline">
                     <div className="timeline-item">
+                    <Zoom
+                        duration={3000}>
                         <div className="date">{experience.date1}</div>
                         <div className="subtitle">{experience.subtitle1}</div>
                         <div className="role">{experience.role1}</div>
                         <div className="description">{experience.description1}</div>
+                    </Zoom>
                     </div>
                     <div className="timeline-item">
+                    <Zoom
+                        duration={3000}>
                         <div className="date">{experience.date2}</div>
                         <div className="subtitle">{experience.subtitle2}</div>
                         <div className="role">{experience.role2}</div>
                         <div className="description">{experience.description2}</div>
+                    </Zoom>
                     </div>
                     <div className="timeline-item">
+                    <Zoom
+                        duration={3000}>
                         <div className="date">{experience.date3}</div>
                         <div className="subtitle">{experience.subtitle3}</div>
                         <div className="role">{experience.role3}</div>
                         <div className="description">{experience.description3}</div>
+                    </Zoom>
                     </div>
                     <div className="timeline-item">
+                    <Zoom
+                        duration={3000}>
                         <div className="date">{experience.date4}</div>
                         <div className="subtitle">{experience.subtitle4}</div>
                         <div className="role">{experience.role4}</div>
                         <div className="description">{experience.description4}</div>
+                    </Zoom>
                     </div>
                 </div>
-            </Zoom>
+            
             <div className="blur-circle pink-circle" />
         </section>
     )
