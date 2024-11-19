@@ -1,38 +1,60 @@
-import ProjectCard from "./ProjectCard";
+import { getDatabase, ref, onValue } from "firebase/database";
+import { useEffect, useState} from "react";
 
 const Project = () => {
-    const projectData = [
-        {
-            image: "img/project hci.png",
-            title: "GoWash - Mobile & Web Application Design",
-            description: "A comprehensive design for GoWash, a platform to search for car wash services. The project includes both mobile and web versions, featuring user-friendly interfaces and seamless navigation to enhance user experience."
-        },
-        {
-            image: "img/sistem absensi asrama new.png",
-            title: "Dormitory Attendance System",
-            description: "A web-based attendance system tailored for dormitory residents at UNKLAB. This system streamlines the process of student check-ins and attendance tracking, making it accessible and efficient through an online platform."
-        },
-        {
-            image: "img/project vispro home.png",
-            title: "AzureGreen Pharmacy - Desktop Application",
-            description: "A desktop application designed for pharmacy administrators. The application simplifies the management of stock, purchases, and financial records, providing an efficient solution for day-to-day operations."
-        },
-        {
-            image: "img/museum project new.png",
-            title: "Museum Website",
-            description: "A responsive museum website built using Bootstrap. This project showcases a clean and visually appealing design that adapts seamlessly to different screen sizes, ensuring an optimal user experience across devices."
-        }
-    ];
+    const [project, setProject] = useState({});
+
+    useEffect(() => {
+        const db = getDatabase();
+        const heroRef = ref(db, "project/");
+        onValue(heroRef, (snapshot) => {
+            const data = snapshot.val();
+            setProject(data);
+            });
+    }, []);
     return (
         <section id="project">
-            <h2 className="sub-title">Project</h2>
+            <h2 className="sub-title">{project.title}</h2>
             <div className="project-grid">
-                {projectData.map((project, index) =>(
-                    <ProjectCard key={index} {...project} />
-                ))}
+                <div className="project-card">
+                    <div className="project-image">
+                        <img src={`data:image/png;base64, ${project.image1}`}  alt="GoWash Project" />
+                    </div>
+                    <div className="project-info">
+                        <h2>{project.subtitle1}</h2>
+                        <p>{project.text1}</p>
+                    </div>
+                </div>
+                <div className="project-card">
+                    <div className="project-image">
+                        <img src={`data:image/png;base64, ${project.image2}`}  alt="GoWash Project" />
+                    </div>
+                    <div className="project-info">
+                        <h2>{project.subtitle2}</h2>
+                        <p>{project.text2}</p>
+                    </div>
+                </div>
+                <div className="project-card">
+                    <div className="project-image">
+                        <img src={`data:image/png;base64, ${project.image3}`}  alt="GoWash Project" />
+                    </div>
+                    <div className="project-info">
+                        <h2>{project.subtitle3}</h2>
+                        <p>{project.text3}</p>
+                    </div>
+                </div>
+                <div className="project-card">
+                    <div className="project-image">
+                        <img src={`data:image/png;base64, ${project.image4}`}  alt="GoWash Project" />
+                    </div>
+                    <div className="project-info">
+                        <h2>{project.subtitle4}</h2>
+                        <p>{project.text4}</p>
+                    </div>
+                </div>
             </div>
         </section>
-    );
-};
+    )
+}
 
 export default Project;
