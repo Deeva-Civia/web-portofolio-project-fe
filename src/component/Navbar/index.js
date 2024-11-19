@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { getDatabase, ref, onValue } from "firebase/database";
 
 const Navbar = () => {
     const [activeSection, setActiveSection] = useState('home');
+    const [navbar, setNavbar] = useState({});
 
     useEffect(() => {
+        const db = getDatabase();
+        const heroRef = ref(db, "navbar/");
+        onValue(heroRef, (snapshot) => {
+            const data = snapshot.val();
+            setNavbar(data);
+            });
         const handleScroll = () => {
             const sections = ['home', 'skills', 'experience', 'certificate', 'project', 'contact'];
             
@@ -16,10 +24,8 @@ const Navbar = () => {
                 }
                 return false;
             }) || 'home';
-
             setActiveSection(current);
         };
-
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
 }, []);
@@ -51,7 +57,7 @@ const scrollToSection = (sectionId, e) => {
                         className={activeSection === 'home' ? 'active' : ''} 
                         onClick={scrollToTop}
                     >
-                        Home
+                        {navbar.section1}
                     </a>
                 </li>
                 <li>
@@ -60,7 +66,7 @@ const scrollToSection = (sectionId, e) => {
                         className={activeSection === 'skills' ? 'active' : ''} 
                         onClick={(e) => scrollToSection('skills', e)}
                     >
-                        Skills
+                        {navbar.section2}
                     </a>
                 </li>
                 <li>
@@ -69,7 +75,7 @@ const scrollToSection = (sectionId, e) => {
                         className={activeSection === 'experience' ? 'active' : ''} 
                         onClick={(e) => scrollToSection('experience', e)}
                     >
-                        Experience
+                        {navbar.section3}
                     </a>
                 </li>
                 <li>
@@ -78,7 +84,7 @@ const scrollToSection = (sectionId, e) => {
                         className={activeSection === 'certificate' ? 'active' : ''} 
                         onClick={(e) => scrollToSection('certificate', e)}
                     >
-                        Certificate
+                        {navbar.section4}
                     </a>
                 </li>
                 <li>
@@ -87,7 +93,7 @@ const scrollToSection = (sectionId, e) => {
                         className={activeSection === 'project' ? 'active' : ''} 
                         onClick={(e) => scrollToSection('project', e)}
                     >
-                        Project
+                        {navbar.section5}
                     </a>
                 </li>
                 <li>
@@ -96,7 +102,7 @@ const scrollToSection = (sectionId, e) => {
                         className={activeSection === 'contact' ? 'active' : ''} 
                         onClick={(e) => scrollToSection('contact', e)}
                     >
-                        Contact
+                        {navbar.section6}
                     </a>
                 </li>
             </ul>
