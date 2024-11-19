@@ -1,4 +1,17 @@
+import { getDatabase, ref, onValue } from "firebase/database";
+import { useEffect, useState} from "react";
+
 const Contact = () => {
+    const [contact, setContact] = useState({});
+
+    useEffect(() => {
+        const db = getDatabase();
+        const heroRef = ref(db, "contact/");
+        onValue(heroRef, (snapshot) => {
+            const data = snapshot.val();
+            setContact(data);
+            });
+    }, []);
     const socialData = [
         { url: "https://github.com/Deeva-Civia", icon: "img/icons8-github-64.png", alt: "github" },
         { url: "https://www.linkedin.com/in/deevacivia/", icon: "img/icons8-linkedin-64.png", alt: "linkedin" },
@@ -9,8 +22,8 @@ const Contact = () => {
     return (
         <section id="contact">
             <div className="contact-content">
-                <h2 className="sub-title">Find Me On</h2>
-                <p className="subtitle2">Feel free to connect with me</p>
+                <h2 className="sub-title">{contact.title}</h2>
+                <p className="subtitle2">{contact.subtitle}</p>
                 <div className="social-icons">
                     {socialData.map((social, index) => (
                     <a key={index} href={social.url} target="_blank">
@@ -18,7 +31,7 @@ const Contact = () => {
                     </a>
                     ))}
                 </div>
-                <p className="email">Email: deevacivia@gmail.com</p>
+                <p className="email">{contact.email}</p>
             </div>
         </section>
     );
