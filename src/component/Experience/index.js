@@ -1,43 +1,49 @@
-import TimelineItem from "./TimelineItem";
+import { getDatabase, ref, onValue } from "firebase/database";
+import { useEffect, useState} from "react";
 
 const Experience = () => {
-    const experienceData = [
-        {
-            date: "Aug 2024 - Present",
-            subtitle: "Computer Science Student Association (CSSA)",
-            role: "Education & BEM",
-            description: "Managed student aspirations and conducted tutoring sessions."
-        },
-        {
-            date: "Aug 2024 - Sep 2024",
-            subtitle: "Filkom Day Committee",
-            role: "PIC",
-            description: "Coordinated a large-scale event with over 900 participants."
-        },
-        {
-            date: "Aug 2023 - Dec 2023",
-            subtitle: "Event Organizer Unklab",
-            role: "Member",
-            description: "Organized various campus events."
-        },
-        {
-            date: "Apr 2022 - May 2022",
-            subtitle: "Graduation Committee, SMAN 1 Airmadidi",
-            role: "Treasurer",
-            description: "Managed finances for an event with 500 participants."
-        }
-    ];
+    const [experience, setExperience] = useState({});
+
+    useEffect(() => {
+        const db = getDatabase();
+        const heroRef = ref(db, "experience/");
+        onValue(heroRef, (snapshot) => {
+            const data = snapshot.val();
+            setExperience(data);
+            });
+    }, []);
     return (
-    <section id="experience">
-        <h2 className="sub-title">Experience</h2>
-        <div className="timeline">
-        {experienceData.map((experience, index) => (
-            <TimelineItem key={index} {...experience} />
-        ))}
-        </div>
-        <div className="blur-circle pink-circle" />
-    </section>
-    );
-};
+        <section id="experience">
+            <h2 className="sub-title">{experience.title}</h2>
+            <div className="timeline">
+                <div className="timeline-item">
+                    <div className="date">{experience.date1}</div>
+                    <div className="subtitle">{experience.subtitle1}</div>
+                    <div className="role">{experience.role1}</div>
+                    <div className="description">{experience.description1}</div>
+                </div>
+                <div className="timeline-item">
+                    <div className="date">{experience.date2}</div>
+                    <div className="subtitle">{experience.subtitle2}</div>
+                    <div className="role">{experience.role2}</div>
+                    <div className="description">{experience.description2}</div>
+                </div>
+                <div className="timeline-item">
+                    <div className="date">{experience.date3}</div>
+                    <div className="subtitle">{experience.subtitle3}</div>
+                    <div className="role">{experience.role3}</div>
+                    <div className="description">{experience.description3}</div>
+                </div>
+                <div className="timeline-item">
+                    <div className="date">{experience.date4}</div>
+                    <div className="subtitle">{experience.subtitle4}</div>
+                    <div className="role">{experience.role4}</div>
+                    <div className="description">{experience.description4}</div>
+                </div>
+            </div>
+            <div className="blur-circle pink-circle" />
+        </section>
+    )
+}
 
 export default Experience;
