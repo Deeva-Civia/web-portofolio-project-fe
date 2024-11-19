@@ -1,5 +1,7 @@
 import { getDatabase, ref, onValue } from "firebase/database";
 import { useEffect, useState} from "react";
+import { Zoom } from "react-awesome-reveal";
+
 
 const Contact = () => {
     const [contact, setContact] = useState({});
@@ -22,16 +24,24 @@ const Contact = () => {
     return (
         <section id="contact">
             <div className="contact-content">
-                <h2 className="sub-title">{contact.title}</h2>
-                <p className="subtitle2">{contact.subtitle}</p>
+                <Zoom>
+                    <h2 className="sub-title">{contact.title}</h2>
+                </Zoom>
+                <Zoom>
+                    <p className="subtitle2">{contact.subtitle}</p>
+                </Zoom>
                 <div className="social-icons">
                     {socialData.map((social, index) => (
                     <a key={index} href={social.url} target="_blank">
+                        <Zoom>
                         <img src={social.icon} alt={social.alt} />
+                        </Zoom>
                     </a>
                     ))}
                 </div>
-                <p className="email">{contact.email}</p>
+                <Zoom>
+                    <p className="email">{contact.email}</p>
+                </Zoom>
             </div>
         </section>
     );

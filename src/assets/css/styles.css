@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 100px;
 }
 * {
     margin: 0;
@@ -271,7 +272,7 @@ h2.sub-title {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border-radius: 15px;
-    padding: 30px;
+    padding: 25px;
     transition: transform 0.3s ease;
 }
 
@@ -284,7 +285,7 @@ h2.sub-title {
 .skill-icon {
     width: 50px;
     height: 50px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     
 }
 

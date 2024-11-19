@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getDatabase, ref, onValue } from "firebase/database";
 
+
 const Navbar = () => {
     const [activeSection, setActiveSection] = useState('home');
     const [navbar, setNavbar] = useState({});
