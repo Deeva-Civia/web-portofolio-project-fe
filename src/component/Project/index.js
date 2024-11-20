@@ -15,6 +15,7 @@ const Project = () => {
     }, []);
     return (
         <section id="project">
+            <div className="blur-circle blue-circle" />
             <Zoom
             	duration={2000}>
                 <h2 className="sub-title">{project.title}</h2>
@@ -69,6 +70,7 @@ const Project = () => {
                         </div>
                     </Zoom>
                 </div>
+                <div className="blur-circle blue-circle" />
         </section>
     )
 }

@@ -63,6 +63,7 @@ const Skills = () => {
                         </div>
                     </Zoom>
                     </div>
+                    <div className="blur-circle blue-circle" />
                 </div>
         </section>
     );

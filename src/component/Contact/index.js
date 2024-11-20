@@ -23,6 +23,7 @@ const Contact = () => {
 
     return (
         <section id="contact">
+            <div className="blur-circle pink-circle" />
             <div className="contact-content">
                 <Zoom>
                     <h2 className="sub-title">{contact.title}</h2>
@@ -43,6 +44,7 @@ const Contact = () => {
                     <p className="email">{contact.email}</p>
                 </Zoom>
             </div>
+            <div className="blur-circle blue-circle" />
         </section>
     );
 };

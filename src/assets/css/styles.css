@@ -13,7 +13,7 @@
 }
 
 body {
-    background: #1a0433;
+    background: linear-gradient(to bottom,#1a0433 0%, #0d011b 60% );
     max-width: 100%;
     color: white;
     padding: 20px 0 0 0;  /* Ubah ini - hilangkan padding bottom */
@@ -110,8 +110,8 @@ nav {
 
 .title {
     font-size: 48px;
-    margin-top: 0;
-    margin-bottom: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     line-height: 1.3;
     background: linear-gradient(to right,#ca4dfc 0%, #ffffff 57%);
     -webkit-background-clip: text;
@@ -120,16 +120,41 @@ nav {
     color: transparent;
 }
 
+    /* animasi mengetik */
+.typed-text {
+    display: inline-block;
+    font-weight: bold;
+}
+
+.typed-cursor {
+    font-size: 2.5rem; 
+    color: #ffffff;
+    opacity: 1;
+    animation: blink 0.7s infinite;
+    border-left: 2px solid #fff; 
+    height: auto; 
+    display: inline-block; 
+    vertical-align: baseline; 
+}
+
+@keyframes blink {
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+
+
 .description {
-    font-size: 16px;
+    font-size: 24px;
     line-height: 1.6;
     color: rgba(255, 255, 255);
 }
 
 .image-container {
     position: relative;
-    width: 400px;
-    height: 370px;
+    width: 430px;
+    height: 390px;
+    margin-top: 15px;
 }
 
 .background-square {
@@ -152,7 +177,7 @@ nav {
 
 .profile-frame {
     position: absolute;
-    width: 104%;
+    width: 100%;
     height: 100%;
     z-index: 2;
 }
@@ -160,7 +185,7 @@ nav {
 .profile-image {
     width: 100%;
     height: 100%;
-    transform: translateX(-80px);
+    transform: translateX(-85px);
 }
 
 .blur-circle {
@@ -181,8 +206,17 @@ nav {
 .blue-circle {
     width: 200px;
     height: 200px;
-    background: rgba(6, 116, 255, 0.5);
-    left: -60px;
+    background: rgba(6, 116, 255, 0.35);
+    left: -70px;
+    bottom: 150px;
+}
+
+#home .blue-circle:last-child {
+    width: 200px;
+    height: 200px;
+    background: rgba(6, 116, 255, 0.25);
+    left: -70px;
+    bottom: -100px;
 }
 
 .decorative-dot-small, .decorative-dot-medium  {
@@ -208,13 +242,13 @@ nav {
 }
 
 .dot-2 {
-    top: 50%;
-    right: 30px;
+    top: 43%;
+    right: 25px;
 }
 
 .dot-3 {
     bottom: 5%;
-    left: 86%;
+    left: 88%;
 }
 
 .dot-4 {
@@ -319,11 +353,11 @@ h2.sub-title {
 }
 
 #skills .blue-circle {
-    width: 200px;
+    width: 500px;
     height: 200px;
-    background: rgba(6, 116, 255, 0.3);
-    left: 1110px;
-    bottom: -650px;
+    background: rgba(6, 116, 255, 0.25);
+    left: 1210px;
+    bottom: -700px;
 }
 
 /* Responsive Adjustments */
@@ -358,8 +392,8 @@ h2.sub-title {
     padding-left: 10rem;
     width: 100%;
     max-width: 500px;
-    /* text-align: center; */
 }
+
 
 .timeline-item::before {
     content: '';
@@ -382,6 +416,7 @@ h2.sub-title {
     background: rgba(255, 255, 255, 0.3);
 }
 
+
 .date {
     font-size: 0.9rem;
     font-weight: 600;
@@ -403,28 +438,40 @@ h2.sub-title {
     color: #FBB8FF;
 }
 
+.timeline-item:hover {
+    transform: translateY(-10px);
+}
+
 .description {
     font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.8);
 }
 
-/* ceritficates section */
+#experience .pink-circle {
+    width: 200px;
+    height: 300px;
+    background: rgb(255, 56, 159, 0.2);
+    top: 200px;
+    right: 1200px;
+}
 
+/* ceritficates section */
 .certificates-grid{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-    margin-top: 3rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
     justify-items: center;
 }
 
 
 .certificate-card {
+    position: relative;
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
+    border-radius: 5px;
     overflow: hidden;
-    width: 250px;
-    height: 178px;
+    width: 320px;
+    height: 220px;
     margin-top: 10px;
 }
 
@@ -432,19 +479,84 @@ h2.sub-title {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease;
 }
 
 .certificate-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 2px 10px #CE72F4;
+    border-radius: 10px;
+}
+.certificate-card:hover img {
+    transform: scale(1.05);
 }
 
-#certificate .blue-circle {
+.certificate-card .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6); 
+    color: #f4dcff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    opacity: 0; 
+    transition: opacity 0.3s ease;
+    pointer-events: none; 
+    text-align: center;
+    border-radius: 5px; 
+}
+
+.certificate-card:hover .overlay {
+    opacity: 1; 
+}
+
+#certificate .pink-circle {
     width: 150px;
     height: 300px;
-    background: rgb(255, 56, 159, 0.5);
+    background: rgb(255, 56, 159, 0.3);
     top: 1900px;
     right: 1px;
+}
+
+#certificate .pink-circle:last-child {
+    width: 300px;
+    height: 200px;
+    background: rgb(255, 56, 159, 0.2);
+    top: 2500px;
+    right: 600px;
+}
+
+.popup {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-img {
+    max-width: 60%;
+    max-height: 60%;
+}
+
+.popup .close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    font-weight: 400;
 }
 
 
@@ -529,6 +641,23 @@ h2.sub-title {
     line-height: 1.5;
 }
 
+#project .blue-circle {
+    width: 200px;
+    height: 200px;
+    background: rgba(6, 116, 255, 0.25);
+    left: 250px;
+    bottom: -2250px;
+}
+
+#project .blue-circle:last-child {
+    width: 200px;
+    height: 200px;
+    background: rgba(6, 116, 255, 0.2);
+    left: 1100px;
+    bottom: -3000px;
+}
+
+
 /* contact section */
 #contact {
     margin-top: 15px;
@@ -571,6 +700,22 @@ h2.sub-title {
 
 .email {
     margin-bottom: 0;
+}
+
+#contact .pink-circle {
+    width: 300px;
+    height: 300px;
+    background: rgb(255, 56, 159, 0.1);
+    top: 3500px;
+    right: 320px;
+}
+
+#contact .blue-circle {
+    width: 500px;
+    height: 200px;
+    background: rgba(6, 116, 255, 0.25);
+    left: -400px;
+    bottom: -3650px;
 }
 
 .footer-container {

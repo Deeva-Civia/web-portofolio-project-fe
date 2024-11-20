@@ -58,9 +58,8 @@ const Experience = () => {
                         <div className="description">{experience.description4}</div>
                     </Zoom>
                     </div>
+                    <div className="blur-circle pink-circle" />
                 </div>
-            
-            <div className="blur-circle pink-circle" />
         </section>
     )
 }
